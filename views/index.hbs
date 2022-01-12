@@ -1,0 +1,12 @@
+<div class="jumbotron mt-4">
+  <h1 class="display-4">Album  {{user.name}}</h1>
+  <p class="lead">A simple App to manage photos developed with Nodejs, Express, Mongodb and Javascript Technologies</p>
+  <hr class="my-4">
+  <p>veniam voluptatibus aliquid unde sit Libero veniam similique ex reiciendis doloribus! Deleniti sunt cum ad est atque. Esse earum
+  </p>
+  {{#if user}}
+  <a class="btn btn-primary btn-lg" href="/albums" role="button">Fotos</a>
+  {{else}}
+  <a class="btn btn-primary btn-lg" href="/users/signin" role="button">Login</a>
+  {{/if}}
+</div>

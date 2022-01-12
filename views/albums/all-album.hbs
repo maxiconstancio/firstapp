@@ -1,0 +1,51 @@
+
+<div class="row">
+  {{#each pic}}
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+
+          
+          <!-- DELETE REQUEST  rounded-circle mx-auto d-block> -->
+          <div class="embed-responsive embed-responsive-1by1">
+            <img
+              class="card-img-top embed-responsive-item"
+              onclick="document.getElementById('{{_id}}').style.display='block'"
+              src="{{path}}"
+              alt="Logo"
+            />
+          </div>
+          <div
+            id="{{_id}}"
+            class="w3-modal"
+            onclick="this.style.display='none'"
+          >
+            <span
+              class="w3-button w3-hover-red w3-xlarge w3-display-topright"
+            >&times;</span>
+            <div class="w3-modal-content w3-animate-zoom">
+              <img src="{{path}}" style="width:100%" />
+            </div>
+          </div>
+          <form action="/albums/delete/{{_id}}?_method=DELETE" method="POST">
+
+            <input type="hidden" name="_method" value="DELETE" />
+            <button
+              type="submit"
+              class="btn btn-danger btn-block btn-sm"
+            >Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="card mx-auto">
+      <div class="card-body">
+        <h1>Hello {{{user.name}}}</h1>
+        <p class="lead">There are not photos yet.</p>
+        <a href="/albums/add" class="btn btn-success btn-block">Upload! One!</a>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+  
