@@ -45,28 +45,28 @@ router.post(
       res.redirect("/albums/add");
     }
     req.files.map(async (file) => {
-      
-      
-        const newAlbum = new Album({
-          filename: file.filename,
-          originalname: file.originalname,
-          path: file.path,
-          user: req.user.id,
-        });
-        return await newAlbum.save();
-     
+      const newAlbum = new Album({
+        filename: file.filename,
+        originalname: file.originalname,
+        path: file.path,
+        user: req.user.id,
+      });
+      return await newAlbum.save();
     });
-    req.flash('success_msg', 'Images Uploaded Successfully')
+    req.flash("success_msg", "Images Uploaded Successfully");
     res.redirect("/albums");
 
     //next()
   }
 );
 
-router.delete('/albums/delete/:id', isAuthenticated, async (req, res) => {
-    await Album.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Foto Deleted Successfully');
-    res.redirect('/albums');
-  })
+router.delete("/albums/delete/:id", isAuthenticated, async (req, res) => {
+
+
+ 
+  await Album.findByIdAndDelete(req.params.id);
+  req.flash("success_msg", "Foto Deleted Successfully");
+  res.redirect("/albums");
+});
 
 module.exports = router;
